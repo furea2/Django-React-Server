@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites', # add
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -40,6 +41,14 @@ INSTALLED_APPS = [
 
     'glaceon',
     'glaceon.apps.loadmap',
+    'glaceon.apps.member',
+
+    # third party library
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    # 'allauth.socialaccount.providers.facebook',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +66,10 @@ ROOT_URLCONF = 'djserver.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            # os.path.join(BASE_DIR, 'templates', 'allauth')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -65,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'django.template.context_processors.request', # add
             ],
         },
     },
@@ -121,3 +134,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = '/loadmap/' # tmp
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '自分nogmailアドレス'
+EMAIL_HOST_PASSWORD = 'gmailのパスワード'
+EMAIL_USE_TLS = True

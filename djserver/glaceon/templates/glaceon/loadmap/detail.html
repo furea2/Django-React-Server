@@ -13,9 +13,11 @@
         <ul>
             <li>Course Title: {{ course.title }}</li>
             <li>Description: {{ course.description }}</li>
+            <li>Description: {{ user.pk }}</li>
         </ul>
         <p>　　---------------------------</p>
         <p>　　ここにReactアプリケーションを立ち上げたい</p>
+        <p>You're logged in with {{ user.get_provider }} as {{ user }}.</p>
     </div>
-    <a href="{% url 'index' %}">戻る</a>
+    <a href="{% url 'loadmap:index' %}">戻る</a>
 {% endblock %}

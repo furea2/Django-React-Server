@@ -1,5 +1,7 @@
 from django.urls import path, include
+from django.conf.urls import url, include
 
 urlpatterns = [
-    path('loadmap/', include('glaceon.apps.loadmap.urls')),
+    url('loadmap/', include('glaceon.apps.loadmap.urls')),
+    url('member/', include('glaceon.apps.member.urls'))
 ]

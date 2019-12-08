@@ -6,7 +6,18 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
+    {% if user.is_authenticated %}
+        <p>Hello {{ user }} !<a href="{% url 'mypage' %}?next=/">Mypage</a></p>
+    {% endif %}
+
 	<h1>{% block pagetitle %}{% endblock %}</h1>
 	{% block contents %}{% endblock %}
+
+    {% if user.is_authenticated %}
+
+        <p><a href="{% url 'account_logout' %}?next=/">Logout</a></p>
+    {% else %}
+        <p><a href="{% url 'account_login' %}?next=/">Login</a></p>
+    {% endif %}
 </body>
 </html>

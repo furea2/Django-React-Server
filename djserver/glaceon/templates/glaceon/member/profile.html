@@ -1,0 +1,21 @@
+{% extends "glaceon/base.html" %}
+
+{% block title %}
+    User Profile
+{% endblock %}
+
+{% block pagetitle %}
+    User Profile
+{% endblock %}
+
+{% block contents %}
+    <div>
+        <ul>
+            <li>Display Name: {{ userprofile.name }}</li>
+            <li>bio: {{ userprofile.bio }}</li>
+        </ul>
+        <p>　　---------------------------</p>
+        <p>　　ここにReactアプリケーションを立ち上げたい（かも？）</p>
+    </div>
+    <a href="{% url 'loadmap:index' %}">戻る</a>
+{% endblock %}

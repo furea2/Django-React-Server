@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import IndexView
+from .views import CourseDetailView, LoadmaplView
 
 urlpatterns = [
-    path('', IndexView.as_view(), name='home'),
+    path('', LoadmaplView.as_view(), name='index'),
+    path('detail/<slug:course_slug>/', CourseDetailView.as_view(), name="detail")
 ]

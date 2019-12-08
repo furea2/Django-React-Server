@@ -1,0 +1,19 @@
+{% extends "glaceon/base.html" %}
+
+{% block title %}
+    Browse Courses
+{% endblock %}
+
+{% block pagetitle %}
+    Course list
+{% endblock %}
+
+{% block contents %}
+    <div>
+        <ul>
+            {% for course in object_list %}
+                <li><a href="{% url 'detail' course.title %}">{{ course.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

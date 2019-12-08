@@ -1,0 +1,21 @@
+{% extends "glaceon/base.html" %}
+
+{% block title %}
+    Course Detail
+{% endblock %}
+
+{% block pagetitle %}
+    Course detail
+{% endblock %}
+
+{% block contents %}
+    <div>
+        <ul>
+            <li>Course Title: {{ course.title }}</li>
+            <li>Description: {{ course.description }}</li>
+        </ul>
+        <p>　　---------------------------</p>
+        <p>　　ここにReactアプリケーションを立ち上げたい</p>
+    </div>
+    <a href="{% url 'index' %}">戻る</a>
+{% endblock %}
